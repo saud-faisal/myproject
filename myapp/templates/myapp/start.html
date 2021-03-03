@@ -1,0 +1,63 @@
+{%extends "myapp/index.html"%}
+{%block child%}
+<div>
+
+<div>enrollment app</div>
+<div style="position:absolute, float:left">new student</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">first_name</th>
+      <th scope="col">father_name</th>
+      <th scope="col">DOB</th>
+      <th scope="col">Adress</th>
+      <th scope="col">city</th>
+      <th scope="col">state</th>
+      <th scope="col">pin</th>
+      <th scope="col">phone_no</th>
+      <th scope="col">email</th>
+      <th scope="col">class_opted</th>
+      <th scope="col">marks</th>
+      <th scope="col">date Enrolled</th>
+    </tr>
+  </thead>
+  <tbody>
+     {%for Obj in obj%}
+    <tr>   
+      <td>{{Obj.first_name}}</td>
+      <td>{{Obj.father_name}}</td>
+       <td>{{Obj.DOB}}</td>
+       <td>{{Obj.address}}</td>
+       <td>{{Obj.city}}</td>
+       <td>{{Obj.state}}</td>
+      <td>{{Obj.pin}}</td>
+       <td>{{Obj.phone_no}}</td>
+       <td>{{Obj.email}}</td>
+       <td>{{Obj.class_opted}}</td>
+       <td>{{Obj.marks}}</td>
+      <td>{{Obj.date_of_joining}}</td>
+    </tr>
+    {%endfor%}
+  </tbody>
+</table>
+
+<div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">next</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+
+</div>
+{%endblock%}
